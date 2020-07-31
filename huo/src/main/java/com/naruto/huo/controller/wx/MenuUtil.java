@@ -25,8 +25,6 @@ public class MenuUtil {
         }
 
         System.out.println("返回码json:"+json.toString());
-        System.out.println("返回码json:"+json.toString());
-        System.out.println("返回码json:"+json.toString());
         System.out.println("result:"+result);
         return result;
     }
