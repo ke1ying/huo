@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>MUSIC</title>
+<meta name="viewport" content="initial-scale=1, maximum-scale=1"> 
+<link rel="shortcut icon" href="/favicon.ico">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+<link rel="stylesheet" href="/css/music.css">
+<link rel="stylesheet"
+	href="//g.alicdn.com/msui/sm/0.6.2/css/sm.min.css">
+<link rel="stylesheet"
+	href="//g.alicdn.com/msui/sm/0.6.2/css/sm-extend.min.css"> 
+
+</head>
+<body>
+
+<div class="page">
+		<div class="content">
+			<div class="card">
+				<div class="card-content">
+					<div class="card-content-inner">
+						<audio src="" id="mymusic"></audio>
+						<div class="music">
+							<div style="text-align: center; padding-top: 10%;">
+								<span id="spanVal" style="font-size: 20px;"></span>
+							</div>
+
+
+
+							<div class="time">
+								<p>
+									<span id="currenttime">0:00</span><span>/</span><span
+										id="duration">0:00</span>
+								</p>
+							</div>
+
+							<div class="content-padded grid-demo">
+								<div class="pic_div">
+									<img src="" alt="" id="music_pic" class="disc"> <img
+										src="" alt=""> <span class="dot"></span>
+
+
+									<div style="padding-top: 80%;">
+										<div class="music_program">
+											<div id="prograss"></div>
+										</div>
+									</div>
+
+
+									<div class="music_menu">
+
+										<div class="row">
+											<div class="col-33">
+												<span class="span1" onClick="backMusic()"></span>
+											</div>
+											<div class="col-33">
+												<span class="span2" onClick="playPause()" id="playbtn"></span>
+											</div>
+											<div class="col-33">
+												<span class="span3" onClick="nextMusic()"></span>
+											</div>
+										</div>
+									</div>
+
+
+									<div class="content-block" style="padding-top: 10%">
+										<p>
+											<a href="#" id="openMusic" class="button button-success open-panel"
+												data-panel='#panel-left-demo'>打开音乐列表</a>
+										</p>
+									</div>
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		
+		<nav class="bar bar-tab">
+			<a class="tab-item external"  href="/indenGo"> <span
+				class="icon icon-computer"></span> <span class="tab-label">视频</span>
+			</a> <a class="tab-item external active	"  href="/music"> <span
+				class="icon icon-app"></span> <span class="tab-label">音乐</span><span
+				class="badge">2</span>
+			</a> <a class="tab-item external" href="/picture" > <span
+				class="icon icon-picture"></span> <span class="tab-label">图片</span>
+			</a> <a class="tab-item external" href="#" onclick="pictureClick()"> <span
+				class="icon icon-me"></span> <span class="tab-label">个人中心</span>
+			</a>
+		</nav>
+</div>
+
+
+<!-- Left Panel with Reveal effect -->
+<div class="panel panel-left panel-reveal theme-dark" id='panel-left-demo'>
+  <div class="content-block">
+    <p style="font-size: 30px;color: green;">音乐列表</p>
+<!--     <p>Vae</p> -->
+    
+  </div>
+  <div class="list-block">
+    <!-- .... -->
+<!--     <div class="card">
+    <div class="card-content"> 
+      <div class="list-block media-list">-->
+        <ul>
+          <li class="item-content">
+            <div class="item-media">
+              <img src="http://gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i3/TB10LfcHFXXXXXKXpXXXXXXXXXX_!!0-item_pic.jpg_250x250q60.jpg" width="44">
+            </div>
+            <div class="item-inner">
+              <div class="item-title-row">
+                <div class="item-title">标题</div>
+              </div>
+              <div class="item-subtitle">子标题</div>
+            </div>
+          </li>
+        </ul>
+  <!--    </div>
+     </div>
+  </div>  -->          
+   <p><a href="#" class="close-panel">关闭</a></p>  
+  </div>
+</div>
+</body>
+	<script type="text/javascript" src="/jquery/jquery-3.4.1.min.js"></script>
+	<script type="text/javascript" src="/layer-v3.1.1/layer/layer.js"></script>
+	<script type="text/javascript" src="/js/music.js"></script>
+	<script type='text/javascript'
+		src='//g.alicdn.com/sj/lib/zepto/zepto.min.js' charset='utf-8'></script>
+	<script type='text/javascript'
+		src='//g.alicdn.com/msui/sm/0.6.2/js/sm.min.js' charset='utf-8'></script>
+	<script type='text/javascript'
+		src='//g.alicdn.com/msui/sm/0.6.2/js/sm-extend.min.js' charset='utf-8'></script> 
+
+</body>
+<script type="text/javascript">
+	$(function() {
+
+	})
+
+	function pictureClick() {
+		layer.msg("作者正在开发中，请稍等");
+	}
+
+	$("#openMusic").on("click",function(){
+	/* 	$.ajax({
+			url:'/openMus',
+			type:'post',
+			data:{},
+			success:function(){
+				
+			}
+		}) */
+	})
+</script>

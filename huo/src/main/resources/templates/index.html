@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>动漫首页</title>
+<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="/swiper-5/package/css/swiper.css">
+<link rel="shortcut icon" href="/favicon.ico">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<link rel="stylesheet"
+	href="//g.alicdn.com/msui/sm/0.6.2/css/sm.min.css">
+<link rel="stylesheet"
+	href="//g.alicdn.com/msui/sm/0.6.2/css/sm-extend.min.css">
+<link rel="stylesheet" href="/css/index.css">
+
+			<style type="text/css">
+					ul {
+						list-style: none;
+						margin:0;
+    					padding:0;
+					}
+					.swiper-container {
+						width: 100%;
+						height: 200px;
+   						border-radius:20px;	
+					}
+					.swiper-slide img{
+						width: 100%;
+					}
+					
+					
+			</style>
+</head>
+<body>
+
+	<div class="page">
+
+
+		<div class="content" style="padding-bottom: 15%;">
+		
+		<!--搜索框  -->
+		<div class="content-padded">
+				<div class="searchbar row">
+					<div class="search-input col-85">
+						<label class="icon icon-search" for="search"></label>
+						<input type="search" id='search' placeholder='请输入关键字(例如:"火影")' />
+					</div>
+					<button onClick="btnSearch()" class="button button-fill button-primary col-15"><span
+						class="icon icon-search"></span></button>
+				</div>
+			</div>
+
+			<!-- 这里是页面内容区 -->
+			<!-- Slider -->
+			<div class="swiper-container">
+				<div class="swiper-wrapper">
+					<!--<div class="swiper-slide">
+						<img src="http://106.15.45.177:8080/pic/qianxun.gif" alt="">
+					</div>
+					<div class="swiper-slide">
+						<img src="http://106.15.45.177:8080/pic/xiao1.jpg" alt="">
+					</div>
+					<div class="swiper-slide">
+						<img src="http://106.15.45.177:8080/pic/dahuli.jpg" alt="">
+					</div>
+					<div class="swiper-slide">
+						<img src="http://106.15.45.177:8080/pic/xiao4.jpg" alt="">
+					</div>
+					<div class="swiper-slide">
+						<img src="http://106.15.45.177:8080/pic/xiaoqian2.png" alt="">
+					</div>-->
+					<div class="swiper-slide">
+						<img src="images/qianxun.gif" alt="">
+					</div>
+					<div class="swiper-slide">
+						<img src="images//xiao1.jpg" alt="">
+					</div>
+					<div class="swiper-slide">
+						<img src="images/dahuli.jpg" alt="">
+					</div>
+					<div class="swiper-slide">
+						<img src="images/xiao4.jpg" alt="">
+					</div>
+					<div class="swiper-slide">
+						<img src="images/xiaoqian2.png" alt="">
+					</div>
+				</div>
+				<div class="swiper-pagination"></div>
+			</div>
+
+		 	<ul>
+				<div class="card" style="display: none">
+					<div class="card-header">新的公布:</div>
+					<div class="card-content">
+						<div class="list-block media-list">
+							<li class="item-content">
+								<div class="item-media">
+									<img
+										src=""
+										width="44">
+								</div>
+								<div class="item-inner">
+									<div class="item-title-row">
+										<div class="item-title">标题</div>
+									</div>
+									<div class="item-subtitle">子标题</div>
+								</div>
+							</li>
+						</div>
+					</div>
+				</div>
+				
+
+			</ul>
+		</div>
+
+
+		 <nav class="bar bar-tab">
+			<a class="tab-item external active" href="/indenGo"> <span
+				class="icon icon-computer"></span> <span class="tab-label">视频</span>
+			</a> <a class="tab-item external" href="/music"> <span
+				class="icon icon-app"></span> <span class="tab-label">音乐</span><span
+				class="badge">2</span>
+			</a> <a class="tab-item external" href="/picture"> <span
+				class="icon icon-picture"></span> <span class="tab-label">图片</span>
+			</a> <a class="tab-item external" href="#" onclick="pictureClick()"> <span
+				class="icon icon-me"></span> <span class="tab-label">个人中心</span>
+			</a>
+		</nav> 
+		<!-- <#include "/common/footer.html"> -->
+	</div>
+	<script type="text/javascript" src="/jquery/jquery-3.4.1.min.js"></script>
+	<script type="text/javascript" src="/layer-v3.1.1/layer/layer.js"></script>
+    <script type="text/javascript" src="/swiper-5/package/js/swiper.js"></script>
+	<script type='text/javascript'
+		src='//g.alicdn.com/sj/lib/zepto/zepto.min.js' charset='utf-8'></script>
+	<script type='text/javascript'
+		src='//g.alicdn.com/msui/sm/0.6.2/js/sm.min.js' charset='utf-8'></script>
+	<script type='text/javascript'
+		src='//g.alicdn.com/msui/sm/0.6.2/js/sm-extend.min.js' charset='utf-8'></script>
+</body>
+<script type="text/javascript">
+	$(function() {
+		//查询video列表
+		var dtime = new Date().getTime();
+		console.log("电影开始时间:"+dtime);
+		queryVideoAll();
+		console.log("电影结束时间:"+(new Date().getTime()-dtime));
+		//幻灯片
+		dtime = new Date().getTime();
+		console.log("幻灯片开始时间:"+dtime);
+		var mySwiper = new Swiper ('.swiper-container', {
+			// 轮播图的方向，也可以是vertical方向
+			direction:'horizontal',
+			//播放速度
+			loop: true,
+			// 自动播放时间
+			autoplay:true,
+			// 播放的速度
+			speed:2000,
+			// 如果需要分页器，即下面的小圆点
+			pagination: {
+				el: '.swiper-pagination',
+			},
+			// 这样，即使我们滑动之后， 定时器也不会被清除
+			autoplayDisableOnInteraction : false,
+		});
+		console.log("幻灯片结束时间:"+(new Date().getTime() - dtime));
+	})
+
+	function pictureClick() {
+		layer.msg("作者正在开发中，请稍等");
+	}
+
+function queryVideoAll(videoName){
+		 $.ajax({
+				url : '/videoList',
+				type : 'post',
+				data:{
+					videoName:videoName
+				},
+				success : function(data) {
+					console.log(data.length);
+				 	if(data.length == 0){
+				 		$.toast("暂无此资源，请联系管理员上传！");
+				 	}
+					var context = '';
+							$.each(data,function(index, item) {
+								/*		var picUrl = "http://106.15.45.177:8080/pic/"
+												+ item.coverPic;*/
+								var picUrl = "images/"+ item.coverPic;
+										
+							 	  	context += '<div class="card"  onclick="goVideo('+ item.id+ ')">'
+							 				+'<div class="card-header">'+item.videoName+'</div>'
+							 				+'		<div class="card-content">'
+							 				+'<div class="list-block media-list">'
+							 				+'			<li class="item-content">'
+							 				+'			<div class="item-media">'
+							 				+'		<img src="'+picUrl+'" width="44">'
+							 				+'			</div>'
+							 				+'			<div class="item-inner">'
+							 				+'						<div class="item-title-row">'
+							 				+'					<div class="item-title">'+item.createTime+'</div>'
+							 				+'				</div>'
+							 				+'				<div class="item-subtitle">'+item.remark+'</div>'
+							 				+'			</div></li></div></div></div>'   
+									
+									});
+					$(".content ul").html(context);
+				}
+
+			}); 
+	}
+
+	//跳转播放页面
+	function goVideo(id) {
+		window.location.href = "/goVideo?id=" + id;
+	}
+	
+	//模糊查询按钮
+	function btnSearch(){
+		var videoName = $("#search").val();
+		console.log("videoName="+videoName);
+		queryVideoAll(videoName);
+	}
+</script>
+</html>

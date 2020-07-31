@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.naruto.huo.mapper.VideoMapper">
+    
+	 <select id="getAllVideo" resultType="com.naruto.huo.model.Video" parameterType="java.lang.String">
+		select id,video_name videoName,create_time createTime,remark,cover_pic coverPic from video 
+		where 1=1 
+		<if test="videoName != null and videoName != ''">
+		  and video_name like concat(concat('%',#{videoName}),'%')
+		</if>
+	</select>
+    
+    <select id="getVideoUrl" resultType="com.naruto.huo.model.Video" parameterType="java.lang.Integer">
+    	select id,video_name videoName,create_time createTime,remark,cover_pic coverPic,yun_url yunUrl from video where id = #{id}
+    </select>
+    
+    <select id="getMusicAll" resultType="com.naruto.huo.model.Music">
+    	select id,music_name musicName,create_time createTime,remark,music_pic musicPic from music 
+    </select>
+</mapper>

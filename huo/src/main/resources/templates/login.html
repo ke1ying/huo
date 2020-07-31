@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>login</title>
+<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="/swiper-5/package/css/swiper.css">
+<link rel="shortcut icon" href="/favicon.ico">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<link rel="stylesheet" href="/css/index.css">
+    <title>Login</title>
+    <script type="text/javascript" src="/jquery/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="/layer-v3.1.1/layer/layer.js"></script>
+    <style type="text/css">
+        html {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        body {
+            width: 100%;
+            height: 100%;
+            font-family: 'Open Sans', sans-serif;
+            margin: 0;
+           /* background-color: #4A374A;*/
+            background-image: url("images/bgPic.jpg");background-size: cover;
+        }
+
+        #login {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin: -150px 0 0 -150px;
+            width: 300px;
+            height: 300px;
+        }
+
+        #login h1 {
+            color: #fff;
+            text-shadow: 0 0 10px;
+            letter-spacing: 1px;
+            text-align: center;
+            opacity: 0.9;
+        }
+
+        h1 {
+            font-size: 2em;
+            margin: 0.67em 0;
+        }
+
+        input {
+            width: 278px;
+            height: 18px;
+            margin-bottom: 10px;
+            outline: none;
+            padding: 10px;
+            font-size: 13px;
+            color: #fff;
+            text-shadow: 1px 1px 1px;
+            border-top: 1px solid #312E3D;
+            border-left: 1px solid #312E3D;
+            border-right: 1px solid #312E3D;
+            border-bottom: 1px solid #56536A;
+            border-radius: 4px;
+            background-color: #2D2D3F;
+        }
+
+        .but {
+            width: 300px;
+            min-height: 20px;
+            display: block;
+            background-color: #4a77d4;
+            border: 1px solid #3762bc;
+            color: #fff;
+            padding: 9px 14px;
+            font-size: 15px;
+            line-height: normal;
+            border-radius: 5px;
+            margin: 0;
+        }
+
+        /*底部备案号居中*/
+        #footer{
+            bottom: 0;
+            text-align: center;
+            position: absolute;
+            height: 50px;
+            line-height: 50px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+<div id="login">
+    <h1>all is well</h1>
+
+    <div style="opacity: 0.7">
+        <input type="text" placeholder="用户名" name="name"></input>
+        <input type="password" placeholder="密码" name="password"></input>
+        <button class="but" type="dengRu">登录</button>
+        <a class="zc" href="/register" type="zhuCe" style="color: yellow">点击注册</a>
+    </div>
+
+</div>
+<div id="footer">
+    <a href="http://www.beian.miit.gov.cn/" target="_blank">皖ICP备20001893号</a>
+</div>
+
+</body>
+
+<script type="text/javascript">
+    $(function () {
+    
+    })
+    $("button[type='dengRu']").on("click",function () {
+    	var name = $("input[name='name']").val();
+        var password = $("input[name='password']").val();
+        if(name.length < 3){
+            layer.msg("请输入大于三位数的账号密码");
+            return;
+        }
+        if(password.length < 3){
+            layer.msg("请输入大于三位数的账号密码");
+            return;
+        }
+        $.ajax({
+           url:'/indexFir',
+           type:'post',
+          /*  contentType : "application/json",  */
+           data:{
+               name:name,
+               password:password
+           },
+           dataType:'json',
+           success:function (data) {
+                if(data.flag == 0){
+                    layer.msg(data.result);
+                }else{
+                    window.location.href="/indenGo";
+                }
+           }
+       }) 
+    })
+</script>
+</html>
