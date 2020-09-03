@@ -70,6 +70,7 @@
 			<version>3.3.0</version>
 		</dependency> -->
 		<!--结束-->
+
 		<dependency>
 			<groupId>net.sf.json-lib</groupId>
 			<artifactId>json-lib</artifactId>
@@ -86,6 +87,12 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-redis</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>io.lettuce</groupId>
+					<artifactId>lettuce-core</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<!--http和redis结束-->
 		<!--解析xml-->
@@ -178,6 +185,19 @@
 			<version>3.1.0</version>
 			<scope>provided</scope>
 		</dependency>
+
+		<!--Jedis开始-->
+		<dependency>
+			<groupId>redis.clients</groupId>
+			<artifactId>jedis</artifactId>
+			<version>2.9.0</version><!--版本号可根据实际情况填写-->
+		</dependency>
+		<!--<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.3.2</version>!&#45;&#45;版本号可根据实际情况填写&ndash;&gt;
+		</dependency>-->
+		<!--Jedis结束-->
 	</dependencies>
 
 	<build>
